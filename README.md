@@ -2,7 +2,11 @@
 
 A Model Context Protocol server that provides read-only access to MySQL databases. This server enables LLMs to inspect database schemas and execute read-only queries.
 
-This server is based on https://github.com/modelcontextprotocol/servers/blob/main/src/postgres
+To learn more about MCP Servers see:
+- [What is MCP](https://skeet.build/docs/guides/what-is-mcp)
+- [Model Context Protocol](https://modelcontextprotocol.io/)
+
+This MySQL MCP Server was designed for seamless integration with [skeet.build](https://skeet.build)
 
 ## Components
 
@@ -35,7 +39,7 @@ To use this server with the Claude Desktop app, add the following configuration 
       "command": "npx",
       "args": [
         "-y",
-        "@skeet-build/mysql",
+        "@skeetbuild/mysql",
         "mysql://localhost:3306/mydb"
       ]
     }
@@ -44,6 +48,80 @@ To use this server with the Claude Desktop app, add the following configuration 
 ```
 
 Replace `/mydb` with your database name.
+
+## Usage with Cursor
+
+To use this server with [Cursor](https://skeet.build/docs/apps/cursor#what-is-model-context-protocol), add the following configuration to your global (`~/.cursor/mcp.json`) or project-specific (`.cursor/mcp.json`) configuration file:
+
+### Global Configuration
+
+```json
+{
+  "mcpServers": {
+    "mysql": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@skeetbuild/mysql",
+        "mysql://localhost:3306/mydb"
+      ]
+    }
+  }
+}
+```
+
+For more details on setting up MCP with Cursor, see the [Cursor MCP documentation](https://skeet.build/docs/apps/cursor#what-is-model-context-protocol).
+
+## Usage with GitHub Copilot in VS Code
+
+To use this server with [GitHub Copilot in VS Code](https://skeet.build/docs/apps/github-copilot), add a new MCP server using the VS Code command palette:
+
+1. Press `Cmd+Shift+P` and search for "Add MCP Server"
+2. Select "SSE MCP Server" and use the following configuration:
+
+```json
+{
+  "mcp": {
+    "servers": {
+      "mysql": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@skeetbuild/mysql",
+          "mysql://localhost:3306/mydb"
+        ]
+      }
+    }
+  }
+}
+```
+
+For detailed setup instructions, see the [GitHub Copilot MCP documentation](https://skeet.build/docs/apps/github-copilot).
+
+## Usage with Windsurf
+
+To use this server with [Windsurf](https://skeet.build/docs/apps/windsurf), add the following configuration to your Windsurf MCP settings:
+
+```json
+{
+  "mcpServers": {
+    "mysql": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@skeetbuild/mysql",
+        "mysql://localhost:3306/mydb"
+      ]
+    }
+  }
+}
+```
+
+For more information on configuring MCP with Windsurf, refer to the [Windsurf MCP documentation](https://skeet.build/docs/apps/windsurf).
+
+## Acknowledgements
+
+This server is based on the MySQL MCP server from the [modelcontextprotocol project](https://github.com/modelcontextprotocol/servers/blob/main/src/postgres).
 
 ## License
 
