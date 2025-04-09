@@ -1,0 +1,30 @@
+{
+  "name": "@skeetbuild/mysql",
+  "version": "0.1.0",
+  "description": "MCP server for interacting with MySQL databases",
+  "license": "MIT",
+  "author": "Skeet.build, PBC (https://skeet.build)",
+  "homepage": "https://skeet.build",
+  "bugs": "https://github.com/skeet-build/mysql/issues",
+  "type": "module",
+  "bin": {
+    "mcp-server-mysql": "dist/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc && shx chmod +x dist/*.js",
+    "prepare": "npm run build",
+    "watch": "tsc --watch"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.0.1",
+    "mysql2": "^3.14.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18.0.0",
+    "shx": "^0.3.4",
+    "typescript": "^5.6.2"
+  }
+}
